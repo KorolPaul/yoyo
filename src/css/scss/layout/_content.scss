@@ -1,0 +1,107 @@
+.content {
+    position: relative;
+    @include media(400px) {
+        padding: 0 0 0 24px;
+    }
+    @include tablet {
+        display: flex;
+        padding-bottom: 130px;
+    }
+    @include desktop {  
+        gap: 74px;
+    }
+
+    &_column {
+        max-width: 550px;
+        @include tablet {
+            flex-grow: 1;
+            width: calc(50% - 40px);
+        }
+        @include desktop {
+            width: calc(50% - 62px);
+        }
+
+        &:last-child {
+            padding: 0 0 66px;
+            margin: 0 0 70px;
+            position: relative;
+            @include tablet {
+                margin: 28px 0 0 80px;
+                padding: 0;
+            }
+            @include desktop {
+                margin-top: 6px;
+                margin-left: 124px;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 100%;
+                margin-left: -42px;
+                height: 4px;
+                width: 60px;
+                background: $cDark;
+                @include tablet {
+                    content: none;
+                }
+            }
+
+            .button-link {
+                min-width: 50%;
+                padding-left: 40px;
+                padding-right: 40px;
+
+            }
+        }
+
+        h1 {
+            @include tablet {
+                margin-top: 30px;
+                width: 120%;
+            }
+            @include desktop {
+                margin-top: 0;
+            }
+
+            & + p {
+                margin-top: 30px;
+            }
+        }
+        h2 {
+            @include tablet {
+                max-width: 80%;
+            }
+        }
+        h3:first-child {
+            @include tablet {
+                margin-top: 30px;
+            }
+            @include desktop {
+                margin-top: 6px;
+            }
+        }
+        a {
+            word-wrap: break-word;
+        }
+    }
+    &_column-sticky {
+        @include tablet {
+            position: sticky;
+            top: 175px;
+        }
+        @include desktop {
+            top: 150px;
+        }
+    }
+    &_links {
+        margin: 40px 0 0;
+    }
+    &_link {
+        display: block;
+        margin: 0 0 10px;
+        text-decoration: underline;
+        color: $cBlue;
+    }
+}

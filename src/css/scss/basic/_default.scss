@@ -1,0 +1,57 @@
+html,
+body {
+    position: relative;
+}
+
+body {
+    background: $cDark;
+    color: $color;
+    font: #{$font-size}/#{1} $font-family;
+    padding: 46px $indent;
+    scroll-behavior: smooth;
+    @include tablet {
+        font-size: $font-size__big;
+        margin: auto;
+    }
+}
+
+a {
+    color: $color;
+    text-decoration: none;
+    transition: .2s $easing opacity;
+
+    &:hover,
+    &.hover {
+        opacity: .6;
+        outline: none;
+    }
+    &:active,
+    &.active {
+        opacity: .8;
+        outline: none;
+    }
+}
+
+p {
+    margin: 0 0 20px;
+    @include tablet {
+        margin-bottom: 30px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea {
+    &:focus {
+        outline: none;
+    }
+}
+
+ol,
+ul {
+    padding: 0 0 0 20px;
+}

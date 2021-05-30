@@ -1,0 +1,67 @@
+%heading-1 {
+    font-size: 40px;
+    line-height: .85;
+    font-weight: normal;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 20px $cDark;
+    @include media(400px) {
+        font-size: 50px;
+    }
+    @include tablet {
+        font-size: 4.7vw;
+        margin-bottom: 5px;
+    }
+}
+%heading-2 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: normal;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    @include tablet {
+        font-size: 32px;
+        font-size: 1.9vw;
+    }
+}
+%heading-3 {
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: normal;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    @include tablet {
+        font-size: 1.9vw;
+        margin-top: 60px;
+        margin-bottom: 15px;
+    }
+}
+%heading-4 {
+    text-transform: uppercase;
+    color: $cBlue;
+    font: #{$font-size}/#{1.2} $font-family;
+    margin: 0;
+    @include tablet {
+        font-size: 22px;
+    }
+    @include desktop {
+        font-size: $font-size;
+    }
+}
+
+h1,
+.heading-1{
+    @extend %heading-1;
+}
+h2,
+.heading-2 {
+    @extend %heading-2;
+}
+h3,
+.heading-3 {
+    @extend %heading-3;
+}
+h4,
+.heading-4 {
+    @extend %heading-4;
+}

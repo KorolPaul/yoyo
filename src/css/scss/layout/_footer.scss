@@ -1,0 +1,9 @@
+.footer {
+    @include tablet {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        max-width: 482px;
+        margin: auto;
+    }
+}

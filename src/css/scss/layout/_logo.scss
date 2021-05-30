@@ -1,0 +1,17 @@
+.logo {
+    margin: 0 0 0 -8px;
+    @include tablet {
+        margin-left: -16px;
+    }
+
+    .main-page & {
+        
+    }
+
+    &_icon {
+        width: 36px;
+        @include tablet {
+            width: 90px;
+        }
+    }
+}

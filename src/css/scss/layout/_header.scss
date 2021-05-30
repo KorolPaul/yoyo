@@ -2,18 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 54px;
-    position: relative;
+    padding: $indent;
+    @include tablet {
+        padding: $indent 70px;
+    }
 
-    .slides-page & {
-        position: absolute;
-        top: 45px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        @include tablet {
-            top: 68px;
-            width: 90%;
-        }
+    &_link {
+        font-size: 16px;
     }
 }

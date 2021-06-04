@@ -8,6 +8,7 @@
 @import  "basic/normalize";
 @import  "basic/fonts";
 @import  "basic/default";
+@import  "basic/animations";
 
 /*Form elements*/
 @import  "form-elements/button";
@@ -21,6 +22,8 @@
 @import  "layout/content";
 @import  "layout/popup";
 @import  "layout/share";
+@import  "layout/article";
 
 /* other */
-
+@import  "other/status";
+@import  "other/progress";

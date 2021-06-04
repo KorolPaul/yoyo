@@ -7,6 +7,10 @@
         margin: auto;
     }
 
+    .article-opened & {
+        animation: 1s $easing onArticleOpened forwards;
+    }
+
     &_contacts {
         margin: 0 0 40px;
     }

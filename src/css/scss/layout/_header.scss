@@ -2,9 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $indent;
+    padding: $indent $indent 50px;
     @include tablet {
-        padding: $indent 70px;
+        padding: $indent 70px 50px;
+    }
+
+    .article-opened & {
+        animation: 1s $easing onArticleOpened forwards;
     }
 
     &_link {

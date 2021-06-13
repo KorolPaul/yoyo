@@ -6,7 +6,7 @@ body {
 body {
     background: $cDark;
     color: $color;
-    font: #{$font-size}/#{1} $font-family;
+    font: #{$font-size}/#{1.1} $font-family;
     letter-spacing: -0.03em;
     padding: 54px $indent 40px;
     scroll-behavior: smooth;
@@ -57,4 +57,8 @@ textarea {
 ol,
 ul {
     padding: 0 0 0 20px;
+}
+
+.popup-opened {
+    overflow: hidden;
 }

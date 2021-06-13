@@ -1,12 +1,15 @@
 {
   "start_url": "./",
   "name": "Yoyo PWA",
+  "short_name": "YOYO",
   "display": "standalone",
+  "background_color": "#151515",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./src/img/logo.svg",
+      "src": "./icon.svg",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/svg"
     }
   ]
 }

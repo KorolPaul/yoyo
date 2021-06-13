@@ -9,17 +9,50 @@
     background-color: $cBlue;
     padding: 20px 0;
     margin: 0 0 10px;
-    transition: .3s $easing padding;
+    position: relative;
+    max-height: 300px;
+    box-sizing: border-box;
+    transition: .3s $easing padding,
+                .3s $easing opacity,
+                .3s $easing max-height,
+                .3s $easing opacity;
     @include tablet {
-        padding: 70px 0 50px;
+        padding: 45px 0 50px;
     }
 
+    &.viewed {
+        opacity: .5;
+    }
     &.opened {
-        padding-top: 50px;
-        padding-bottom: 130px;
+        opacity: 1;
+        margin-bottom: 20px;
+    }
+
+
+    .article-opened & {
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: 0;
+
+        &.opened {
+            opacity: 1;
+            max-height: 10000px;
+            padding-top: 50px;
+            padding-bottom: 80px;
+            @include tablet {
+                padding-top: 70px;
+                padding-bottom: 100px;
+            }
+        }
+    }
+    .article-opened &.opened + & {
+        opacity: 1;
+        max-height: 300px;
+        padding: 20px 0;
         @include tablet {
             padding-top: 70px;
-            padding-bottom: 180px;
+            padding-bottom: 60px;
         }
     }
 
@@ -32,36 +65,68 @@
             padding: 0 70px;
         }
     }
+    &_header-info {
+        @include tablet {
+            display: flex;
+            gap: 56px;
+            flex-shrink: 0;
+        }
+    }
     &_intro {
         display: none;
         @include tablet {
             display: block;
+            max-width: 320px;
+            flex-shrink: 0;
+            transition: .3s $easing opacity;
+        }
+
+        .opened & {
+            opacity: 0;
         }
     }
     &_title {
         display: inline-block;
         margin: 0 0 16px;
-        width: 80%;
+        width: 92%;
         @include tablet {
             position: relative;
-            margin-bottom: 100px;
+            margin: 0 50px 0 0;
+            width: 80%;
+        }
+
+        .opened & {
+            margin-bottom: 0;
+            @include tablet {
+                margin-bottom: 100px;
+            }
         }
     }
     &_subtitle {
         font-size: 24px;
-        border-bottom: 1px solid #E2E2E2;
-        padding: 0 0 20px;
+        padding: 0 0 24px;
         margin: 0 0 50px -64px;
+        border-bottom: 1px solid transparent;
+        transition: .2s $easing border;
         @include tablet {
             font-size: 30px;
             margin-bottom: 100px;
             margin-left: -20vw;
         }
-    }
-    &_duration {
-        transition: .3s $easing opacity;
 
         .opened & {
+            border-bottom-color: #E2E2E2;
+        }
+    }
+    &_duration {
+        display: inline-block;
+        max-height: 24px;
+        white-space: nowrap;
+        transition: .2s $easing opacity,
+                    .1s $easing min-height .1s;
+
+        .opened & {
+            max-height: 0;
             opacity: 0;
         }
     }
@@ -70,32 +135,69 @@
         position: absolute;
         right: $indent;
         top: 0;
+        transition: .2s $easing top;
         @include tablet {
             font-size: 21px;
+            position: static;
+            vertical-align: top;
+            position: relative;
             top: 10px;
-            right: auto;
-            left: calc(100% + 20px);
-        }
-    }
-    &_content {
-        padding: 50px $indent 50px 80px;
-        max-height: 0;
-        overflow: hidden;
-        transition: .6s $easing max-height .2s;
-        @include tablet {
-            padding-left: 45%;
-            padding-right: 230px;
+            right: 4px;
         }
 
         .opened & {
+            top: 10px;
+        }
+    }
+    &_content {
+        padding: 0 $indent 0 80px;
+        max-height: 0;
+        overflow: hidden;
+        transition: .6s $easing padding .2s,
+                    .6s $easing max-height .2s;
+        @include tablet {
+            padding: 0 230px 0 45%;
+        }
+
+        .opened & {
+            padding: 50px $indent 0 80px;
             max-height: 5000px;
+            @include tablet {
+                padding: 50px 50px 0 45%;
+            }
+            @include desktop {
+                padding: 50px 230px 0 45%;
+            }
         }
 
         .heading-1 {
-            font-size: 30vw;
+            font-size: 17vw;
             @include tablet {
+                font-size: 13vw;
+                margin-bottom: 50px;
+            }
+            @include desktop {
                 font-size: 200px;
             }
+        }
+    }
+    &_next {
+        position: absolute;
+        left: $indent;
+        bottom: 30px;
+        font-size: 18px;
+        padding: 0 0 0 40px;
+        background: url(#{$img}/arrow-down.svg) no-repeat left center / 14px auto;
+        width: auto;
+        visibility: hidden;
+        transition: .5s visibility 2s;
+        @include tablet {
+            left: 70px;
+            bottom: 50px;
+        }
+
+        .opened & {
+            visibility: visible;
         }
     }
 
@@ -107,9 +209,8 @@
         }
     }
     h2 {
-        margin: 50px 0;
         @include tablet {
-            margin: 100px 0;
+            @include heading-1;
         }
     }
     img {

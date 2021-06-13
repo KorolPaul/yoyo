@@ -1,78 +1,30 @@
 .popup {
-    display: none;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: auto;
-    z-index: 10;
-    @include tablet {
-        align-items: center;
-        justify-content: center;
-    }
+    background: $cBlue;
+    position: relative;
+    max-width: 335px;
 
-    &.opened {
-        display: block;
-        @include tablet {
-            display: flex;
-        }
-    }
-
-    &_fade {
-        background-color: rgba(#000, .8);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-    }
     &_close {
         position: absolute;
+        right: 20px;
+        top: 20px;
+        background: url(#{$img}/close.svg) no-repeat center center;
         height: 25px;
         width: 25px;
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        background: url(#{$img}/close.svg) no-repeat center center;
-        background-size: 100% 100%;
-        transition: .2s $easing opacity;
-
-        &:hover {
-            opacity: .6;
-        }
-        &:active {
-            opacity: 1;
-        }
+        padding: 0;
     }
     &_content {
-        background: radial-gradient(77.12% 249.97% at 77.12% 51.95%, rgba(172, 72, 188, 0.51) 0%, #080A31 100%), #080A31;
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        padding: 60px 16px;
-        box-sizing: border-box;
-        @include tablet {
-            width: auto;
-            min-width: 700px;
-            max-width: 1200px;
-            margin: auto;
-            padding-left: 60px;
-            padding-right: 60px;
+        padding: 90px 44px 60px;
+    }
+    &_footer {
+        background-color: rgba($cDark, .2);
+        padding: 0 22px;
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+
+        img {
+            margin: -7px 5px 0;
+            vertical-align: middle;
         }
     }
-}
-
-.fade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
 }

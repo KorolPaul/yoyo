@@ -1,5 +1,6 @@
 .footer {
     padding: $indent;
+    transition: .5s $easing opacity 2s;
     @include tablet {
         display: flex;
         align-items: flex-start;
@@ -7,6 +8,9 @@
         margin: auto;
     }
 
+    .content-hidden & {
+        opacity: 0;
+    }
     .article-opened & {
         animation: 1s $easing onArticleOpened forwards;
     }

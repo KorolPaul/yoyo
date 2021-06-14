@@ -10,23 +10,43 @@ setTimeout(() => {
 
 /* navigation */
 let openedArticle = 0;
+const articlesElement = document.querySelector('.articles');
 const articleElements = document.querySelectorAll('.article');
 
 function setOpenedArticle(e) {
     const target = e.currentTarget;
     openedArticle = Number(target.dataset.article);
-    document.body.classList.add('article-opened');
+
     openArticle();
 }
 
 function openArticle() {
+    document.body.classList.remove('article-opened');
+    document.body.classList.add('article-opening');
     articleElements.forEach(el => el.classList.remove('opened'));
+
     const target = document.querySelector(`.article[data-article="${openedArticle}"]`);
+
+    const root = document.documentElement;
+    const targetPosition = Math.round(target.getBoundingClientRect().y);
     target.classList.add('opened');
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        
+        root.style.setProperty('--articleTranslateY', `${targetPosition - 200}px`);
+
+        document.body.classList.remove('article-opening');
+        document.body.classList.add('article-opened');
+
+        setTimeout(() => {
+            root.style.setProperty('--articleTranslateDuration', '.5s');
+            root.style.setProperty('--articleTranslateY', '0');
+        }, 50);
+    }, 350);
+
+    
+
     saveOpenedArticle();
 }
 

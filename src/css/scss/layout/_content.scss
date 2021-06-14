@@ -21,7 +21,7 @@
         opacity: 0;
     }
     .article-opened & {
-        padding-top: 0;
+        //padding-top: 0;
 
         &::before {
             opacity: 0;

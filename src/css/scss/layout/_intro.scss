@@ -1,5 +1,7 @@
+
 .intro {
-    display: none !important;
+    --text-width: 300px;
+    //display: none !important;
 
     position: fixed;
     background: $cDark;
@@ -14,6 +16,9 @@
     z-index: 11;
     animation: 4.5s $easing showAndHide forwards;
     transition: .2s $easing opacity;
+    @include tablet {
+        --text-width: 600px;
+    }
 
     .intro-playing & {
         pointer-events: all;
@@ -21,9 +26,9 @@
 
     &_text {
         font-size: 16px;
-        perspective: 50px;
-        perspective-origin: center center;
-        transform-origin: center center;
+        perspective: 250px;
+        position: relative;
+        perspective-origin: center bottom;
         opacity: 1;
         @include tablet {
             font-size: 30px;
@@ -36,12 +41,44 @@
         span {
             display: inline-block;
             opacity: 0;
-            transform: rotate3d(1, 0, 0, -18deg);
+            transform-origin: center center;
+            transform: rotateX(-45deg);
 
             @for $i from 1 to 50 {
                 .intro-playing &:nth-child(#{$i}) {
-                    animation: 2s $easing showLetters #{$i / 40}s forwards;
+                    animation: 2s $easing showLetters #{$i / 50}s forwards;
                 }
+            }
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            background: $cDark;
+            position: absolute;
+            top: -10px;
+            z-index: 1;
+        }
+        &::before {
+            box-shadow: -13px 0 20px 2px $cDark;
+            left: 30px;
+            bottom: -10px;
+            width: 20px;
+            transform: skewX(20deg);
+            animation: 1.2s linear flightBefore .22s forwards;
+            @include tablet {
+                animation-delay: .18s;
+            }
+        }
+        &::after {
+            box-shadow: 13px 0 20px 2px $cDark;
+            right: calc(100% + 40px);
+            bottom: -10px;
+            width: 100px;
+            transform: skewX(-20deg);
+            animation: .8s linear flightAfter 2.18s forwards;
+            @include tablet {
+                animation-duration: 1s;
             }
         }
     }
@@ -53,19 +90,25 @@
 @keyframes showLetters {
     0% {
         opacity: 0;
-        transform: rotate3d(1, 0, 0, -12deg);
+        transform: rotateX(-45deg);
+    }
+    3% {
+        opacity: 1;
     }
     5% {
         opacity: 1;
-        transform: rotate3d(1, 0, 0, 0deg);
+        transform: rotateX(0deg);
     }
     95% {
         opacity: 1;
-        transform: rotate3d(1, 0, 0, 0deg);
+        transform: rotateX(0deg);
+    }
+    97% {
+        opacity: 1;
     }
     100% {
         opacity: 0;
-        transform: rotate3d(1, 0, 0, -12deg);
+        transform: rotateX(-45deg);
     }
 }
 @keyframes showAndHide {
@@ -77,5 +120,21 @@
     }
     100% {
         opacity: 0;
+    }
+}
+@keyframes flightBefore {
+    from {
+        transform: skewX(20deg) translate(0);
+    }
+    to {
+        transform: skewX(20deg) translate(var(--text-width));
+    }
+}
+@keyframes flightAfter {
+    from {
+        transform: skewX(-20deg) translate(0);
+    }
+    to {
+        transform: skewX(-20deg) translate(var(--text-width));
     }
 }
